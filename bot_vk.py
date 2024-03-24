@@ -7,6 +7,7 @@ from config import BOT_API_KEY
 
 
 def write_message(sender, message, attachments=None):
+    """Функция отправки сообщений пользователю"""
     authorize.method(
         'messages.send', {
             'user_id': sender,
@@ -18,8 +19,9 @@ def write_message(sender, message, attachments=None):
 
 
 def play_guess_number(sender):
-    secret_number = randint(1, 25)
-    write_message(sender, 'Я загадал число от 1 до 25. Попробуй угадать!')
+    """Игра  угадай случайное число"""
+    secret_number = randint(1, 100)
+    write_message(sender, 'Я загадал число от 1 до 100. Попробуй угадать!')
     write_message(sender, 'У тебя 5 попыток)')
 
     try_count = 0
@@ -39,14 +41,15 @@ def play_guess_number(sender):
                     try_count += 1
                     break
                 except ValueError:
-                    write_message(sender, 'Некорректный ввод. Попробуй еще раз.')
-
-    write_message(sender, 'К сожалению, ты не угадал число. Загаданное число было: {}'.format(secret_number))
+                    write_message(
+                        sender,
+                        'Некорректный ввод. Попробуй еще раз.')
 
     write_message(
         sender,
-        'К сожалению, ты не угадал число. Загаданное число было: {}'.format(secret_number)
-        )
+        'К сожалению, ты не угадал число. Загаданное число было: {}'.format(
+            secret_number
+            ))
 
 
 authorize = VkApi(token=BOT_API_KEY)
