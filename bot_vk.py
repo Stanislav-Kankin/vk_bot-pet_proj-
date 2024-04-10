@@ -71,8 +71,8 @@ try:
                     upload_image['owner_id'], upload_image['id']
                 ))
             if user_message == 'Привет':
-                write_message(sender, 'Здарова!!!', attachments)
-                write_message(sender, 'Чтобы начать игру нпиши "Играем"')
+                write_message(sender, 'Здарова!!!')
+                write_message(sender, 'Чтобы начать игру напиши "Играем"')
             elif user_message == 'Пока':
                 write_message(sender, 'Досвидули!')
             elif user_message == 'Играем':
